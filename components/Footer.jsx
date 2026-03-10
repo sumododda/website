@@ -1,16 +1,12 @@
-import React from "react"
-import Fade from "react-reveal/Fade"
-import data from "../yourdata"
+import data from "../data/sitedata";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <div className="section" id="contact">
       <div className="container">
         <div className="footer-container">
-          <Fade bottom cascade>
-            <h1>Contact</h1>
-            <h2>{data.contactSubHeading}</h2>
-          </Fade>
+          <h1 className="fade-in">Contact</h1>
+          <h2 className="fade-in">{data.contactSubHeading}</h2>
           <a className="email-link" href={`mailto:${data.contactEmail}`}>
             {data.contactEmail}
           </a>
@@ -22,18 +18,17 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={socialLink.img} alt="icons"></img>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={socialLink.img} alt="social icon" />
               </a>
             ))}
           </div>
           <span>
-            Made With <icon>❤</icon> by{" "}
+            Made With <span style={{ color: "red" }}>❤</span> by{" "}
             <a href="https://www.sumododda.me/">Sumanth Dodda</a>
           </span>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default Footer

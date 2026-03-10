@@ -53,3 +53,28 @@ body {
     transform: scale(1.1);
   }
 }
+
+// Fade-in animations (replacing react-reveal)
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.fade-in-cascade > * {
+  animation: fadeInUp 0.6s ease-out both;
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}

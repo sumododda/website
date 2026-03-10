@@ -1,6 +1,10 @@
-import React from "react"
-import scrollTo from "gatsby-plugin-smoothscroll"
-const Navbar = () => {
+"use client";
+
+export default function Navbar() {
+  const scrollTo = (id) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="section">
       <div className="container">
@@ -21,7 +25,5 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default Navbar

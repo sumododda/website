@@ -1,7 +1,6 @@
-import React from "react"
-import data from "../yourdata"
+import data from "../data/sitedata";
 
-const Skills = () => {
+export default function Skills() {
   return (
     <div className="section">
       <div className="container">
@@ -10,7 +9,8 @@ const Skills = () => {
           <div className="skills-grid">
             {data.skills.map((skill, index) => (
               <div className="skill" key={index}>
-                <img src={skill.img} alt="css"></img>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={skill.img} alt="skill icon" />
                 <p>{skill.para}</p>
               </div>
             ))}
@@ -18,7 +18,5 @@ const Skills = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default Skills
