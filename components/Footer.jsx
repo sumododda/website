@@ -1,53 +1,63 @@
 "use client";
 import data from "../data/sitedata";
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { useFadeIn, useScaleIn } from "../lib/motion";
+import { Mail, Github, Linkedin, BookOpen, FlaskConical, Instagram, Shield } from "lucide-react";
+
+const socialIcons = {
+  GitHub: Github,
+  LinkedIn: Linkedin,
+  TryHackMe: Shield,
+  Medium: BookOpen,
+  ResearchGate: FlaskConical,
+  Instagram: Instagram,
+};
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-slate-950 pt-24 pb-12 border-t border-slate-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">Let's Talk</h2>
-          <p className="text-xl text-slate-400 mb-8">{data.contactSubHeading}</p>
-          
-          <a 
+    <footer id="contact" className="pt-24 pb-12 border-t border-zinc-800">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <motion.div {...useFadeIn()} className="mb-16">
+          <p className="font-mono text-sm text-zinc-500 mb-3 tracking-wider">
+            {"// contact"}
+          </p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-zinc-50 mb-4">
+            Let&apos;s Talk
+          </h2>
+          <p className="font-body text-lg text-zinc-400 mb-8 max-w-md mx-auto">
+            Have a project in mind or want to collaborate?
+          </p>
+
+          <a
             href={`mailto:${data.contactEmail}`}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-500 text-white font-bold hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/25"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-cyan-500 text-zinc-950 font-semibold font-body hover:bg-cyan-400 transition-colors duration-200 cursor-pointer"
           >
-            <Mail className="w-5 h-5" />
+            <Mail className="w-4 h-4" />
             {data.contactEmail}
           </a>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
-          {data.social.map((socialLink, index) => (
-            <motion.a
-              key={index}
-              href={socialLink.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-slate-800 hover:border-slate-700 hover:-translate-y-1 transition-all"
-            >
-              <img src={socialLink.img} alt="social icon" className="w-5 h-5 filter invert opacity-70" />
-            </motion.a>
-          ))}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {data.social.map((socialLink, index) => {
+            const Icon = socialIcons[socialLink.name] || Github;
+            return (
+              <motion.a
+                key={socialLink.name}
+                href={socialLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                {...useScaleIn(index * 0.04)}
+                className="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-cyan-500 hover:border-zinc-600 transition-all duration-200 cursor-pointer"
+                aria-label={socialLink.name}
+              >
+                <Icon className="w-4 h-4" />
+              </motion.a>
+            );
+          })}
         </div>
 
-        <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} Sumanth Dodda. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">
-            Made with <span className="text-brand-500 mx-1">❤</span> by <a href="https://www.sumododda.me/" className="text-slate-300 hover:text-brand-500 transition-colors">Sumo</a>
-          </p>
+        <div className="pt-8 border-t border-zinc-900 text-zinc-600 text-sm font-mono tracking-wider">
+          <p>&copy; {new Date().getFullYear()} Sumanth Dodda</p>
         </div>
       </div>
     </footer>

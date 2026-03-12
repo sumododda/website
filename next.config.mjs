@@ -4,9 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  sassOptions: {
-    silenceDeprecations: ["legacy-js-api", "import", "global-builtin"],
-  },
 };
 
 export default nextConfig;

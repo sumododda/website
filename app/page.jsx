@@ -1,18 +1,18 @@
 import Header from "../components/Header";
-import Experience from "../components/Experience";
 import Work from "../components/Work";
-import BentoGrid from "../components/BentoGrid";
-import Promotion from "../components/Promotion";
+import Experience from "../components/Experience";
+import Skills from "../components/Skills";
+import Education from "../components/Education";
 import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Experience />
-      <BentoGrid />
       <Work />
-      <Promotion />
+      <Experience />
+      <Skills />
+      <Education />
       <Footer />
     </>
   );

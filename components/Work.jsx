@@ -1,60 +1,69 @@
 "use client";
 import data from "../data/sitedata";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { useFadeIn } from "../lib/motion";
+import { ExternalLink, Star } from "lucide-react";
+
+const langColors = {
+  Python: "#3572A5",
+  Shell: "#89e051",
+  Go: "#00ADD8",
+  JavaScript: "#f1e05a",
+};
 
 export default function Work() {
   return (
-    <section id="work" className="py-24 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-16 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
+    <section id="projects" className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div {...useFadeIn()} className="mb-14">
+          <p className="font-mono text-sm text-zinc-500 mb-3 tracking-wider">
+            {"// projects"}
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-zinc-50">
+            Featured Work
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all flex flex-col h-full"
+            <motion.a
+              key={project.name}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...useFadeIn(index * 0.08)}
+              className="group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer block"
             >
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-                <img 
-                  src={project.imageSrc} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-500 transition-colors">
-                  {project.title}
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="font-heading text-lg font-semibold text-zinc-50 group-hover:text-cyan-500 transition-colors duration-200">
+                  {project.name}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
-                  {project.para}
-                </p>
-                
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-brand-500 transition-colors mt-auto w-max"
-                >
-                  <Github className="w-4 h-4" />
-                  View Repository
-                </a>
+                <ExternalLink className="w-4 h-4 text-zinc-600 group-hover:text-cyan-500 transition-colors duration-200 flex-shrink-0 mt-1" />
               </div>
-            </motion.div>
+
+              <p className="font-body text-sm text-zinc-400 leading-relaxed mb-5">
+                {project.description}
+              </p>
+
+              <div className="flex items-center gap-4 mt-auto">
+                <span className="flex items-center gap-1.5 text-xs font-mono text-zinc-500">
+                  <span
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{
+                      backgroundColor: langColors[project.language] || "#ccc",
+                    }}
+                  />
+                  {project.language}
+                </span>
+
+                {project.stars > 0 && (
+                  <span className="flex items-center gap-1 text-xs font-mono text-zinc-500">
+                    <Star className="w-3 h-3" />
+                    {project.stars}
+                  </span>
+                )}
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>

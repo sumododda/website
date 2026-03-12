@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
 import data from "../data/sitedata";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { useFadeInOnLoad } from "../lib/motion";
+import { ArrowDown } from "lucide-react";
 
 export default function Header() {
   const scrollTo = (id) => {
@@ -10,63 +10,58 @@ export default function Header() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-      {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-500/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
+    >
+      {/* Subtle background grid + glow */}
+      <div className="absolute inset-0 bg-grid opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 hero-glow pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+      <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <motion.p
+          {...useFadeInOnLoad(0)}
+          className="font-mono text-sm text-zinc-500 mb-6 tracking-wider"
         >
-          <h2 className="text-brand-500 font-medium tracking-wide mb-4">
-            Hi, I&apos;m {data.name} <span className="animate-pulse inline-block">👋</span>
-          </h2>
-        </motion.div>
-
-        <motion.h1 
-          className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {data.headerTagline.map((tag, i) => (
-            <React.Fragment key={i}>
-              <span className={i === 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-cyan-400" : ""}>
-                {tag}
-              </span>
-              {i < data.headerTagline.length - 1 ? <br className="hidden md:block" /> : null}
-              {" "}
-            </React.Fragment>
-          ))}
-        </motion.h1>
-
-        <motion.p 
-          className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {data.headerParagraph}
+          {"// hello world"}
         </motion.p>
 
-        <motion.div 
+        <motion.h1
+          {...useFadeInOnLoad(0.08)}
+          className="font-heading text-5xl md:text-7xl font-bold text-zinc-50 mb-4 tracking-tight leading-tight"
+        >
+          {data.name}
+        </motion.h1>
+
+        <motion.p
+          {...useFadeInOnLoad(0.14)}
+          className="font-heading text-xl md:text-2xl font-semibold text-cyan-500 mb-6"
+        >
+          {data.role}
+        </motion.p>
+
+        <motion.p
+          {...useFadeInOnLoad(0.2)}
+          className="font-body text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-12"
+        >
+          {data.tagline}
+        </motion.p>
+
+        <motion.div
+          {...useFadeInOnLoad(0.26)}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <button
-            onClick={() => scrollTo("#work")}
-            className="flex items-center gap-2 px-8 py-4 rounded-full bg-white text-slate-950 font-semibold hover:bg-slate-200 transition-colors w-full sm:w-auto justify-center"
+            onClick={() => scrollTo("#projects")}
+            className="group flex items-center gap-2 px-8 py-3 rounded-full bg-cyan-500 text-zinc-950 font-semibold font-body hover:bg-cyan-400 transition-colors duration-200 cursor-pointer"
           >
-            View Work <ArrowRight className="w-5 h-5" />
+            View Projects
+            <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
           </button>
-          
+
           <a
             href={`mailto:${data.contactEmail}`}
-            className="flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 text-white font-semibold hover:bg-slate-800 border border-slate-700 transition-colors w-full sm:w-auto justify-center"
+            className="flex items-center gap-2 px-8 py-3 rounded-full border border-zinc-700 text-zinc-300 font-semibold font-body hover:border-cyan-500 hover:text-cyan-500 transition-all duration-200 cursor-pointer"
           >
             Get In Touch
           </a>

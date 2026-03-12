@@ -1,66 +1,58 @@
 "use client";
 import data from "../data/sitedata";
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { useFadeIn } from "../lib/motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-slate-950">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-16 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Experience</h2>
-          <div className="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
+    <section id="experience" className="py-24">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.div {...useFadeIn()} className="mb-14">
+          <p className="font-mono text-sm text-zinc-500 mb-3 tracking-wider">
+            {"// experience"}
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-zinc-50">
+            Experience
+          </h2>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="relative border-l-2 border-zinc-800 ml-2">
           {data.experience.map((job, index) => (
-            <motion.div 
+            <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.1 }}
-              className="relative pl-8 md:pl-0"
+              {...useFadeIn(index * 0.08)}
+              className="relative pl-8 pb-14 last:pb-0"
             >
-              <div className="md:grid md:grid-cols-4 md:gap-8 items-start">
-                <div className="hidden md:block md:col-span-1 text-right pt-2">
-                  <span className="text-sm font-medium text-slate-400">{job.date}</span>
-                </div>
-                
-                <div className="md:col-span-3 relative">
-                  {/* Timeline dot */}
-                  <div className="absolute -left-10 md:-left-[2.1rem] top-2 w-4 h-4 rounded-full bg-brand-500 border-4 border-slate-950 z-10 hidden md:block"></div>
-                  
-                  {/* Timeline line */}
-                  <div className="absolute -left-[1.8rem] top-6 bottom-[-3rem] w-0.5 bg-slate-800 hidden md:block"></div>
-                  
-                  <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8 hover:bg-slate-800/50 transition-colors">
-                    <div className="flex flex-col md:hidden mb-4">
-                      <span className="text-sm font-medium text-brand-500 mb-1">{job.date}</span>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                      <Briefcase className="w-5 h-5 text-brand-500 md:hidden" />
-                      {job.title}
-                    </h3>
-                    <h4 className="text-lg font-medium text-slate-400 mb-6">{job.company}</h4>
-                    
-                    <ul className="space-y-3">
-                      {job.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-start text-slate-300">
-                          <span className="mr-3 text-brand-500 mt-1.5">•</span>
-                          <span className="leading-relaxed text-sm md:text-base">{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+              {/* Timeline dot */}
+              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-zinc-950" />
+
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-1">
+                <h3 className="font-heading text-lg font-semibold text-zinc-50">
+                  {job.title}
+                </h3>
+                <span className="text-zinc-600 hidden sm:inline">/</span>
+                <span className="font-body text-sm text-zinc-400">
+                  {job.company}
+                </span>
               </div>
+
+              <p className="font-mono text-xs text-zinc-500 mb-4 tracking-wider">
+                {job.date}
+              </p>
+
+              <ul className="space-y-2.5">
+                {job.bullets.map((bullet, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start font-body text-sm text-zinc-400 leading-relaxed"
+                  >
+                    <span className="mr-3 text-zinc-600 mt-0.5 flex-shrink-0 select-none">
+                      &mdash;
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

@@ -1,137 +1,152 @@
 const siteData = {
-  //   Header Details
-  name: "Sumo",
-  headerTagline: ["Product Security,", "AI & Automation,", "Zero Trust."],
-  headerParagraph: "Building secure, scalable, and AI-driven platforms.",
+  // Header
+  name: "Sumanth Dodda",
+  role: "Security Engineer",
+  tagline: "Building secure, scalable, and AI-driven platforms.",
   contactEmail: "doddasumo@gmail.com",
 
-  // Work Section
+  // Projects (from GitHub)
   projects: [
     {
-      title: "MCP Review - Security Scanner",
-      para: "Built a comprehensive security scanner for MCP servers detecting vulnerabilities across 7 attack surfaces including tool poisoning and prompt injection.",
-      imageSrc:
-        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
-      url: "https://github.com/sumododda",
+      name: "mcp-scanner",
+      description:
+        "Security scanner for Model Context Protocol (MCP) servers. 3-tier detection pipeline with pattern matching, capability analysis, and LLM-powered semantic analysis.",
+      language: "Python",
+      stars: 0,
+      url: "https://github.com/sumododda/mcp-scanner",
     },
     {
-      title: "Zero Trust Implementation",
-      para: "Designed and implemented Zero Trust architecture on Active Directory, enforcing JIT access and least privilege controls.",
-      imageSrc:
-        "https://images.unsplash.com/photo-1614064641936-a5926e0e8568?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
-      url: "https://github.com/sumododda",
+      name: "Trishul",
+      description: "The Ultimate Recon Framework",
+      language: "Shell",
+      stars: 11,
+      url: "https://github.com/sumododda/Trishul",
     },
     {
-      title: "Unified Reconnaissance Tool",
-      para: "Engineered an automated reconnaissance tool integrating open-source scanners for comprehensive vulnerability assessment.",
-      imageSrc:
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
-      url: "https://github.com/sumododda",
+      name: "skills-as-mcp",
+      description: "MCP server for dynamic AI agent skill management",
+      language: "Python",
+      stars: 0,
+      url: "https://github.com/sumododda/skills-as-mcp",
+    },
+    {
+      name: "Prep-Notes",
+      description:
+        "This is my personal notes for every shit i learn, feel free to use it :)",
+      language: "Go",
+      stars: 2,
+      url: "https://github.com/sumododda/Prep-Notes",
     },
   ],
 
-  // Experience Section
+  // Experience
   experience: [
     {
       title: "Engineer II, Product Security",
       company: "GEICO",
       date: "July 2024 - Present",
       bullets: [
-        "Architected and developed ThreatAI, an AI-powered automated threat modeling platform using LangGraph, Milvus significantly accelerating the threat modeling process across product teams",
-        "Led secure software development lifecycle (SSDLC) initiatives, conducting security design reviews and providing guidance to development teams on secure coding practices",
-        "Drove software supply chain security programs, identifying and mitigating risks across third-party dependencies and build pipelines",
-        "Developed AI-driven security tooling to automate vulnerability detection and risk identification throughout the development lifecycle",
-        "Conducted threat modeling assessments for multiple Tier 2 applications, identifying security risks and developing remediation guidance prior to production release",
-        "Mentored engineering teams on security best practices, threat modeling methodologies, and OWASP Top 10 mitigations"
-      ]
+        "Architected ThreatAI, an AI-powered threat modeling platform using LangGraph and Milvus, accelerating threat modeling across product teams",
+        "Led SSDLC initiatives — security design reviews and secure coding guidance for development teams",
+        "Drove software supply chain security, identifying risks across third-party dependencies and build pipelines",
+      ],
     },
     {
       title: "Graduate Teaching Assistant",
-      company: "University of North Carolina, Charlotte",
-      date: "December 2022 - December 2023",
+      company: "UNC Charlotte",
+      date: "Dec 2022 - Dec 2023",
       bullets: [
-        "Developed and delivered instructional materials for Secure Programming and Penetration Testing courses to 75 graduate students",
-        "Facilitated hands-on learning of OWASP Top 10 vulnerabilities, security design patterns, and secure coding practices",
-        "Contributed lasting curriculum improvements including reference materials adopted permanently by the department, achieving a 95% class average"
-      ]
+        "Developed instructional materials for Secure Programming and Penetration Testing courses for 75 graduate students",
+        "Contributed curriculum improvements adopted permanently by the department, achieving a 95% class average",
+      ],
     },
     {
       title: "SOC Analyst Intern",
       company: "Idea Dunes Pvt Ltd.",
-      date: "December 2021 - June 2022",
+      date: "Dec 2021 - Jun 2022",
       bullets: [
-        "Monitored critical infrastructure using Splunk, proactively detecting and triaging potential security incidents across enterprise environments",
-        "Built real-time security dashboards consolidating data from 1,000+ critical devices, enabling faster incident identification and response",
-        "Collaborated on network firewall management and led Splunk cloud upgrade initiatives, ensuring platform stability and app compatibility"
-      ]
-    }
+        "Monitored critical infrastructure using Splunk, detecting and triaging security incidents across enterprise environments",
+        "Built real-time security dashboards consolidating data from 1,000+ critical devices",
+      ],
+    },
   ],
 
-  // About Section
-  aboutParaOne:
-    "Security Engineer with 2+ years of product security experience specializing in AI-driven threat modeling, secure software development lifecycle (SSDLC), and software supply chain security.",
-  aboutParaTwo:
-    "Built enterprise-grade automated threat modeling platforms and security scanning tools leveraging LLM architectures. Proven ability to identify root causes of security issues, develop scalable guidance, and mentor teams on secure development practices.",
-  aboutParaThree:
-    "Holds MS in Cybersecurity and 6 industry certifications including OSCP, CompTIA Security+, CCNA, and RHCSA.",
-  aboutImage:
-    "https://images.unsplash.com/photo-1650733790397-c986514bfb49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=364&q=81",
-
-  // Skills Section
+  // Skills
   skills: [
     {
-      img: "/images/amazonaws.svg",
-      para: "Cloud & Infrastructure: AWS, Azure, Azure Sentinel, Splunk, Active Directory/LDAP, Network Security (TCP/IP, DNS, TLS/SSL, VPN, Firewalls)",
+      title: "Security Engineering",
+      items:
+        "Threat Modeling, SSDLC, Supply Chain Security, Vulnerability Assessment",
+      icon: "Shield",
     },
     {
-      img: "/images/linux.svg",
-      para: "AI & Automation: LangGraph, LLM-as-Judge Evaluation, Automated Security Scanning, AI-Driven Risk Identification, Prompt Injection Detection",
+      title: "AI & Automation",
+      items:
+        "LangGraph, LLM Evaluation, Automated Scanning, Prompt Injection Detection",
+      icon: "BrainCircuit",
     },
     {
-      img: "/images/docker.svg",
-      para: "Programming & Tools: Python, Bash, Golang, PowerShell, SQL, FastAPI, Celery, Docker, Kubernetes, PostgreSQL, Redis, SvelteKit",
+      title: "Cloud & Infrastructure",
+      items: "AWS, Azure, Splunk, Active Directory, Docker, Kubernetes",
+      icon: "Server",
     },
     {
-      img: "/images/gnubash.svg",
-      para: "Security Engineering: Threat Modeling, SSDLC, Software Supply Chain Security, Incident Investigation, Root Cause Analysis, Vulnerability Assessment",
-    },
-    {
-      img: "/images/kubernetes.svg",
-      para: "Certifications: OSCP, CompTIA Security+, CCNA, RHCSA, AWS Solutions Architect - Associate, AWS Certified Cloud Practitioner, eJPT",
-    },
-    {
-      img: "/images/apache.svg",
-      para: "Education: MS in Cybersecurity (UNC Charlotte), BS in Computer Science (Information Security - Vellore Institute of Technology)",
+      title: "Programming",
+      items: "Python, Bash, Golang, SQL, FastAPI, SvelteKit, PostgreSQL, Redis",
+      icon: "Terminal",
     },
   ],
 
-  // Promotion Section
-  promotionHeading: "Matters !!.",
-  promotionPara:
-    "You will have massive doubt. One day you will feel strongly about something, then the next day you will wonder if your work and your dream really even matters. It does. But, you have to remind yourself of that all the time. Your work is real. If you stop, if you quit…something is lost forever. Your work makes a difference. Keep going.",
+  // Certifications
+  certifications: [
+    "CompTIA Security+",
+    "CCNA",
+    "RHCSA",
+    "AWS Solutions Architect",
+    "AWS Cloud Practitioner",
+    "eJPT",
+  ],
 
-  // Contact Section
-  contactSubHeading: "Let's create your next experience together",
-  social: [
-    { img: "/images/github.svg", url: "https://github.com/sumo2001" },
+  // Education
+  education: [
     {
-      img: "/images/linkedin.svg",
+      degree: "MS Cybersecurity",
+      school: "University of North Carolina, Charlotte",
+      years: "2022 - 2023",
+      gpa: "3.8 / 4.0",
+    },
+    {
+      degree: "BS Computer Science, Information Security",
+      school: "Vellore Institute of Technology",
+      years: "2018 - 2022",
+      gpa: "8.5 / 10",
+    },
+  ],
+
+  // Social
+  social: [
+    {
+      name: "GitHub",
+      url: "https://github.com/sumododda",
+    },
+    {
+      name: "LinkedIn",
       url: "https://www.linkedin.com/in/sumanth-dodda/",
     },
     {
-      img: "/images/tryhackme.svg",
+      name: "TryHackMe",
       url: "https://tryhackme.com/p/AlLMight",
     },
     {
-      img: "/images/medium.svg",
+      name: "Medium",
       url: "https://sumododda.medium.com/",
     },
     {
-      img: "/images/researchgate.svg",
+      name: "ResearchGate",
       url: "https://www.researchgate.net/profile/Sumanth-Dodda",
     },
     {
-      img: "/images/instagram.svg",
+      name: "Instagram",
       url: "https://www.instagram.com/iamcybermight",
     },
   ],
